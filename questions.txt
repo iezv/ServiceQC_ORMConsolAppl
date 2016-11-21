@@ -1,0 +1,8 @@
+//Company Info
+      select c from Company c
+//All services info
+      select s from Service s
+//All employees info
+      select e from Employee e
+//Responsible person the service
+      select r from Employee e where select e from Employee e
