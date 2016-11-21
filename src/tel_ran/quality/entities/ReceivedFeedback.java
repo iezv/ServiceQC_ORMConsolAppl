@@ -81,6 +81,12 @@ public class ReceivedFeedback {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "ReceivedFeedback [feedbackid=" + feedbackid + ", feedbackdate=" + feedbackdate + ", comment=" + comment
+				+ ", resultQuestion=" + resultQuestion + ", client=" + client + ", service=" + service + "]";
+	}
 	
 	
 

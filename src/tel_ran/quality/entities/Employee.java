@@ -14,6 +14,9 @@ public class Employee {
 	Address address;
 	String phone;
 	
+	@OneToOne
+	Service service;
+		
    public Employee(long tz, String name, int birthyear, Address address, String phone) {
 		super();
 		this.tz = tz;
@@ -22,6 +25,14 @@ public class Employee {
 		this.address = address;
 		this.phone = phone;
 	}
+
+	public Service getService() {
+	return service;
+}
+
+public void setService(Service service) {
+	this.service = service;
+}
 
 	public Employee() {
 		super();

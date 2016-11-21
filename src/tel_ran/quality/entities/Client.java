@@ -25,6 +25,10 @@ public class Client {
 		this.address = address;
 	}
 
+	public Client() {
+		super();
+
+	}
 	public int getClientId() {
 		return clientId;
 	}

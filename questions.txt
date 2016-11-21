@@ -1,8 +1,86 @@
 //Company Info
       select c from Company c
+      
 //All services info
       select s from Service s
+      
 //All employees info
       select e from Employee e
+      
 //Responsible person the service
-      select r from Employee e where select e from Employee e
+      select  s.responsibleperson from Service s where s.servicename='repair' 
+      select  s.responsibleperson from Service s where s.servicename='tire_mounting' 
+      select  s.responsibleperson from Service s where s.servicename='washing' 
+      
+//Select Questions of each service
+      select  s.questions from Service s where s.servicename='repair'
+      select  s.questions from Service s where s.servicename='tire_mounting'
+      select  s.questions from Service s where s.servicename='washing'
+      
+//Select ReceivedFeedback of each service       
+      select  r ReceivedFeedback r where service='repair'
+      select  r ReceivedFeedback r where service='tire_mounting'
+      select  r ReceivedFeedback r where service='washing'
+      
+//Select Count All ReceivedFeedback 
+      select COUNT (r) from tel_ran.quality.entities.ReceivedFeedback r
+      
+//Select Count and ReceivedFeedback of date     
+      select COUNT (r) from ReceivedFeedback r where r.feedbackdate='2016-01-02 00:00:00'
+      select r from ReceivedFeedback r where r.feedbackdate='2016-01-02 00:00:00'
+      
+//Select Count and ReceivedFeedback of month    
+      select r from ReceivedFeedback r where r.feedbackdate like '%2016-01%'
+      select COUNT (r) from ReceivedFeedback r where r.feedbackdate='2016-01-02 00:00:00'
+      
+//Select Count and ReceivedFeedback of month  ant service      
+      select r from ReceivedFeedback r where r.feedbackdate like '%2016-03%' and service='repair'
+      select COUNT (r) from ReceivedFeedback r where r.feedbackdate like '%2016-03%' and service='repair'
+
+//Select Bad ReceivedFeedback of month  ant service 
+      select r from ReceivedFeedback r where r.feedbackdate like '%2016-05%' and service='repair' and resultQuestion.ques1 < 3
+      select COUNT (r) from ReceivedFeedback r where r.feedbackdate like '%2016-05%' and service='repair' and resultQuestion.ques1 < 3
+      select r from ReceivedFeedback r where r.feedbackdate like '%2016-05%' and service='repair' and resultQuestion.ques2 < 3
+      select COUNT (r) from ReceivedFeedback r where r.feedbackdate like '%2016-05%' and service='repair' and resultQuestion.ques2 < 3
+      select r from ReceivedFeedback r where r.feedbackdate like '%2016-05%' and service='repair' and resultQuestion.ques3 < 3
+      select COUNT (r) from ReceivedFeedback r where r.feedbackdate like '%2016-05%' and service='repair' and resultQuestion.ques3 < 3
+      select r from ReceivedFeedback r where r.feedbackdate like '%2016-05%' and service='repair' and resultQuestion.ques4 < 3
+      select COUNT (r) from ReceivedFeedback r where r.feedbackdate like '%2016-05%' and service='repair' and resultQuestion.ques4 < 3
+      select r from ReceivedFeedback r where r.feedbackdate like '%2016-05%' and service='repair' and resultQuestion.ques5 < 3
+      select COUNT (r) from ReceivedFeedback r where r.feedbackdate like '%2016-05%' and service='repair' and resultQuestion.ques5 < 3
+
+
+
+//select b from Book b join b.authors a where a.name='author1'
+//select a from Book b join b.authors a where b.title='title14'
+//Select b from Book b join b.authors a where a.address.country='country8'
+//select b from Book b where size(b.authors)=1
+//книги у которых только один автор
+//Select b from Book b join b.authors a where a.address.country='country2' and size(b.authors)=1
+//книги одного автора живущего в стране2
+//Select a.name, count(a.name) from Book b join b.authors a group by a.name order by count(a.name)
+// select p from tel_ran.books.entities.LiteratureBook p
+// select p from tel_ran.books.entities.LiteratureBook p where authors=author3
+
+// select p from tel_ran.books.entities.BestSeller p where yearSeller=2011
+// select p from tel_ran.books.entities.BestSeller p where publishYear=2011
+
+// select p from tel_ran.books.entities.BestSeller p where authors=author19
+// select p from BestSeller p where authors='author0'
+// Select COUNT (e) FROM Book e WHERE e.subject = 'Electrical'
+// Select COUNT (e) FROM Book e WHERE e.subject = 'Electrical' and e.price > 500
+// Select e FROM Book e WHERE e.subject = 'Electrical' and e.price between 500 and 1000
+// Select e.authors FROM Book e WHERE e.subject = 'Electrical' and e.price between 500 and 1000
+// Select e.authors='author8' FROM Book e WHERE e.subject = 'Electrical' and e.price between 500 and 1000
+
+// select b from Book b where b.title='title7'
+// select b from Book b join b.authors a where a.name='author7'
+// select b.authors from Book b
+// select b.isbn from Book b 
+// select b.isbn, b.title from Book b
+// select b.isbn,a from Book b join b.authors a where a.name ='author1'
+// Сколько книг написал каждый автор
+// select a.name, count(a.name) from Book b join b.authors a group by a.name order by count(a.name) 
+// select a.name, count(1), a.birthYear from Book b join b.authors a where a.birthYear between 1990 and 2000 group by a.name order by count(1) desc
+// select a.name, count(a.name) from Book b join b.publisher a group by a.name order by count(a.name)
+// select a from Author a where name like '%2%'
