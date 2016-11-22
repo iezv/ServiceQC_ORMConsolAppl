@@ -48,6 +48,10 @@ public class ReceivedFeedback {
 		return client;
 	}
 
+	public Result getResultQuestion() {
+		return resultQuestion;
+	}
+
 	public void setClient(Client client) {
 		this.client = client;
 	}

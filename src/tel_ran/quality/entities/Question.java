@@ -23,7 +23,7 @@ public class Question {
 		this.maxRating = maxRating;
 		services = new HashSet<>();
 	}
-
+	
 	public Question() {
 		super();
 	}
@@ -73,7 +73,7 @@ public class Question {
 	@Override
 	public String toString() {
 		return "Question [questionId=" + questionId + ", questionBody=" + questionBody + ", maxRating=" + maxRating
-				 + "]";
+				+  ", services=" + services + "]";
 	}
 	
 	
