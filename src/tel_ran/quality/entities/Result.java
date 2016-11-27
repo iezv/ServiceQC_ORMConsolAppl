@@ -19,8 +19,6 @@ public class Result {
 		this.ques5 = ques5;
 	}
 	
-	
-
 	public Result() {
 		super();
 	}

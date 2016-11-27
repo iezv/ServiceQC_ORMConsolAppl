@@ -2,6 +2,7 @@ package tel_ran.orm.dao;
 
 import java.util.*;
 import javax.persistence.*;
+
 public class QualityOrm {
 	@PersistenceContext(unitName="springHibernate",type=PersistenceContextType.EXTENDED)
 	EntityManager em;

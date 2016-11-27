@@ -3,77 +3,44 @@ package tel_ran.quality.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name="employee")
-public class Employee {
-	@Id
-	@Column(name = "tz", nullable = false, insertable = true, updatable = true)
-	long tz;
-	String name;
-	int birthyear;
-	@Embedded
-	Address address;
-	String phone;
+public class Employee extends Person {
 	
-   public Employee(long tz, String name, int birthyear, Address address, String phone) {
-		super();
-		this.tz = tz;
-		this.name = name;
-		this.birthyear = birthyear;
-		this.address = address;
-		this.phone = phone;
+    @ManyToOne
+	Manager manager;
+    
+    @ManyToOne
+    Service service;
+
+	public Employee(int id, String name, int birthyear, String phone, String email, Address address) {
+		super(id, name, birthyear, phone, email, address);
 	}
 
 	public Employee() {
 		super();
 	}
 
-	public long getTz() {
-		return tz;
+	public Manager getManager() {
+		return manager;
 	}
 
-	public String getName() {
-		return name;
+	public void setManager(Manager manager) {
+		this.manager = manager;
 	}
 
-	public int getBirthyear() {
-		return birthyear;
+	public Service getService() {
+		return service;
 	}
 
-	public Address getAddress() {
-		return address;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (tz ^ (tz >>> 32));
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Employee other = (Employee) obj;
-		if (tz != other.tz)
-			return false;
-		return true;
+	public void setService(Service service) {
+		this.service = service;
 	}
 
 	@Override
 	public String toString() {
-		return "Employee [tz=" + tz + ", name=" + name + ", birthyear=" + birthyear + ", address=" + address
-				+ ", phone=" + phone + "]";
+		return "Employee [id=" + id + ", name=" + name + ", birthyear=" + birthyear + ", phone=" + phone + 
+				", email=" + email + ", address=" + address + "manager=" + manager.id + ", service=" + service.name + "]";
 	}
-		
+   
+  	
 			
 }

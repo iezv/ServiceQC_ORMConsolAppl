@@ -1,40 +1,52 @@
 package tel_ran.quality.entities;
 
-import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import java.time.LocalDate;
+import java.util.*;
+import javax.persistence.*;
 
 @Entity
 public class Ticket {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="ticketId")
-	int ticketId;
-	Date startDate;
-	Date closeDate;
+	@Column(name="id")
+	int id;
+	LocalDate startDate;
+	LocalDate closeDate;
+	String status;
+	String questCod; 
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 		
+	public String getQuestCod() {
+		return questCod;
+	}
+
+	public void setQuestCod(String questCod) {
+		this.questCod = questCod;
+	}
+
 	@ManyToOne
 	Service service;
 	
-	@ManyToOne 
-	Question question;
-	
-	public Ticket(Date startDate) {
+	public Ticket(LocalDate startDate) {
 		super();
 		this.startDate = startDate;
-	}
+		status = "open";
+		}
 
 	public Ticket() {
 		super();
 	}
 
 	
-	public void setCloseDate(Date closeDate) {
+	public void setCloseDate(LocalDate closeDate) {
 		this.closeDate = closeDate;
 	}
 
@@ -42,19 +54,15 @@ public class Ticket {
 		this.service = service;
 	}
 
-	public void setQuestion(Question question) {
-		this.question = question;
+	public int getId() {
+		return id;
 	}
 
-	public int getTicketId() {
-		return ticketId;
-	}
-
-	public Date getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
 
-	public Date getCloseDate() {
+	public LocalDate getCloseDate() {
 		return closeDate;
 	}
 
@@ -62,16 +70,11 @@ public class Ticket {
 		return service;
 	}
 
-	public Question getQuestion() {
-		return question;
-	}
-
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ticketId;
+		result = prime * result + id;
 		return result;
 	}
 
@@ -84,17 +87,17 @@ public class Ticket {
 		if (getClass() != obj.getClass())
 			return false;
 		Ticket other = (Ticket) obj;
-		if (ticketId != other.ticketId)
+		if (id != other.id)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Ticket [ticketId=" + ticketId + ", startDate=" + startDate + ", closeDate=" + closeDate + ", service="
-				+ service + ", question=" + question + "]";
+		return "Ticket [id=" + id + ", startDate=" + startDate + ", closeDate=" + closeDate + ", service="
+				+ service + "]";
 	}
-
+	
 	
 
 }
